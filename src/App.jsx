@@ -5,32 +5,37 @@ import animationData from './assets/test.json';
 import santa from './assets/santa.json';
 import movesanta from './assets/movesanta.json';
 import christmas from './assets/christmas.json';
+import "aos/dist/aos.css"; // Import AOS CSS
+import AOS from "aos"; // Import AOS JavaScript
 
 const App = () => {
     const [isText, setIsText] = useState(false);
     const [showChristmasAnimation, setShowChristmasAnimation] = useState(false);
 
     useEffect(() => {
+        AOS.init({
+            duration: 200,
+            easing: "ease-in-out", // Easing type
+            once: true, // Whether the animation should happen only once
+        });
+
         const sequence = () => {
-            setIsText(false); // Reset state
+            setIsText(false);
             setShowChristmasAnimation(false);
 
-            // Show text after 3 seconds
             setTimeout(() => {
                 setIsText(true);
 
-                // Show Christmas animation 4 seconds after text
                 setTimeout(() => {
                     setIsText(false);
                     setShowChristmasAnimation(true);
 
-                    // Restart the sequence after another 4 seconds
                     setTimeout(sequence, 7000);
                 }, 6000);
-            }, 4000);
+            }, 3700);
         };
 
-        sequence(); // Start the sequence when the component mounts
+        sequence();
     }, []);
 
     return (
@@ -53,8 +58,8 @@ const App = () => {
 
 
             {isText && (
-                <div className="sorry-container">
-                    ბოდიში... ხელფასები როდის იქნება?
+                <div className="sorry-container" data-aos="zoom-in">
+                    ბოდიში... რაც მოხტა მოხტა.
                 </div>
             )}
 
@@ -75,6 +80,7 @@ const App = () => {
                     style={{ width: '600px', height: '600px' }}
                 />
             )}
+
         </div>
     );
 };
