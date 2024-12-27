@@ -2,28 +2,55 @@
 .sorry-container{
   width: 778px;
   height: 175px;
-  background-color: #F24E1E;
+  background-color: #1D749C;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
+  font-size: 28px;
   font-weight: bold;
   border-radius: 8px;
   color: #fff;
   font-family: "Poppins", serif;
-  border: 3px solid #000000;
 }
 
 .main-container{
-  background-color: #e6e4e4;
+  background-color: #fff;
   width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  position: relative;
+  overflow-x: hidden;
+}
+.santa-first{
+  position: absolute;
+  top: 0;
+  left: 30px;
+}
+.santa-second{
+  position: absolute;
+  top: 0;
+  right: 30px;
+}
+.santa-move {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  width: 150px;
+  height: 150px;
+  background-color: red;
+  animation: moveSanta 14s linear infinite;
 }
 
+@keyframes moveSanta {
+  0% {
+    left: -150px; /* მარცხნიდან გამოვიდეს ეკრანის გარედან */
+  }
+  100% {
+    left: 100vw; /* ეკრანის მარჯვენა მხარეს გავიდეს */
+  }
+}
 .gift{
   width: 500px;
   height: 500px;
